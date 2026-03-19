@@ -11,209 +11,122 @@
       --deep:#061220;--navy:#0a1e35;--mid:#0d2847;
       --accent:#4a9fd4;--light:#7fc8f0;--text:#c8dff0;
       --bright:#e8f4ff;--muted:#4a7fa0;--dim:#2a4a6b;
-      --surface:rgba(255,255,255,0.05);--border:rgba(100,170,220,0.18);
+      --s:rgba(255,255,255,.05);--b:rgba(100,170,220,.18);
     }
-    html,body{
-      min-height:100vh;
-      background:linear-gradient(160deg,var(--deep) 0%,var(--navy) 40%,var(--mid) 70%,#102e54 100%);
-      font-family:'Spectral','Georgia',serif;
-      color:var(--text);
-    }
-    ::-webkit-scrollbar{width:5px}
-    ::-webkit-scrollbar-thumb{background:rgba(100,170,220,.3);border-radius:3px}
-
-    @keyframes waveFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    @keyframes bgPulse{0%,100%{opacity:.05}50%{opacity:.11}}
-    @keyframes dotPulse{0%,100%{box-shadow:0 0 4px currentColor}50%{box-shadow:0 0 12px currentColor}}
-
-    /* ── BG ── */
-    #bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
-    #bg svg{position:absolute;bottom:0;left:0;width:100%;animation:bgPulse 5s ease-in-out infinite}
-    #bg svg:nth-child(2){animation-delay:1.7s}
-    #bg svg:nth-child(3){animation-delay:3.2s}
-
-    /* ── LAYOUT ── */
-    #wrap{max-width:1100px;margin:0 auto;padding:40px 18px 60px;position:relative;z-index:1}
-
-    /* ── HEADER ── */
-    header{text-align:center;margin-bottom:44px;animation:fadeUp .7s ease both}
-    .wave-row{display:flex;justify-content:center;gap:12px;color:var(--accent);margin-bottom:16px}
-    .wi{animation:waveFloat 3.2s ease-in-out infinite}
-    .wi:nth-child(2){animation-delay:.55s}
-    h1{
-      font-family:'Spectral SC',serif;
-      font-size:clamp(26px,5vw,48px);
-      font-weight:400;letter-spacing:.16em;
-      color:var(--bright);
-      text-shadow:0 0 50px rgba(74,159,212,.5);
-      margin-bottom:8px;
-    }
-    .tag{font-size:12px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:4px}
-    .sub{font-size:12px;color:var(--muted);font-style:italic}
-    .badge{
-      display:inline-block;margin-top:10px;
-      background:rgba(34,197,94,.13);border:1px solid rgba(34,197,94,.35);
-      color:#22c55e;font-size:10px;padding:3px 12px;border-radius:3px;
-      letter-spacing:.15em;text-transform:uppercase;
-    }
-
-    /* ── TOOLBAR ── */
-    .toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+    html,body{min-height:100vh;background:linear-gradient(160deg,var(--deep) 0%,var(--navy) 40%,var(--mid) 70%,#102e54 100%);font-family:'Spectral','Georgia',serif;color:var(--text)}
+    ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:rgba(100,170,220,.3);border-radius:3px}
+    @keyframes wF{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+    @keyframes fU{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes sp{to{transform:rotate(360deg)}}
+    @keyframes dp{0%,100%{box-shadow:0 0 4px currentColor}50%{box-shadow:0 0 12px currentColor}}
+    @keyframes bg{0%,100%{opacity:.05}50%{opacity:.11}}
+    #BG{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+    #BG svg{position:absolute;bottom:0;left:0;width:100%;animation:bg 5s ease-in-out infinite}
+    #BG svg:nth-child(2){animation-delay:1.8s}#BG svg:nth-child(3){animation-delay:3.5s}
+    #W{max-width:1100px;margin:0 auto;padding:40px 18px 60px;position:relative;z-index:1}
+    header{text-align:center;margin-bottom:44px;animation:fU .7s ease both}
+    .wr{display:flex;justify-content:center;gap:12px;color:var(--accent);margin-bottom:16px}
+    .wi{animation:wF 3.2s ease-in-out infinite}.wi:nth-child(2){animation-delay:.55s}
+    h1{font-family:'Spectral SC',serif;font-size:clamp(26px,5vw,48px);font-weight:400;letter-spacing:.16em;color:var(--bright);text-shadow:0 0 50px rgba(74,159,212,.5);margin-bottom:8px}
+    .tg{font-size:12px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:4px}
+    .sg{font-size:12px;color:var(--muted);font-style:italic}
+    .bg{display:inline-block;margin-top:10px;background:rgba(34,197,94,.13);border:1px solid rgba(34,197,94,.35);color:#22c55e;font-size:10px;padding:3px 12px;border-radius:3px;letter-spacing:.15em;text-transform:uppercase}
+    .tb{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
     .tl{font-size:11px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
-    .btn-all{
-      background:rgba(74,159,212,.17);color:var(--light);
-      border:1px solid rgba(74,159,212,.32);padding:8px 20px;
-      border-radius:4px;font-size:12px;letter-spacing:.14em;
-      text-transform:uppercase;font-family:inherit;cursor:pointer;
-      transition:all .2s;
-    }
-    .btn-all:hover{filter:brightness(1.3);transform:translateY(-1px)}
-    .btn-all:disabled{opacity:.4;cursor:wait}
-
-    /* ── GRID ── */
-    #mg{display:grid;grid-template-columns:1fr;gap:22px}
-    #mg.wide{grid-template-columns:1fr 1fr}
-    @media(max-width:660px){#mg.wide{grid-template-columns:1fr}}
-
-    /* ── SPOT CARDS ── */
-    #sg{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-    .sc{
-      background:var(--surface);border:1px solid var(--border);
-      border-radius:9px;padding:13px 15px;cursor:pointer;
-      transition:border-color .22s,background .22s,transform .18s;
-      animation:fadeUp .5s ease both;
-    }
+    .ba{background:rgba(74,159,212,.17);color:var(--light);border:1px solid rgba(74,159,212,.32);padding:8px 20px;border-radius:4px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-family:inherit;cursor:pointer;transition:all .2s}
+    .ba:hover{filter:brightness(1.3);transform:translateY(-1px)}.ba:disabled{opacity:.4;cursor:wait}
+    #MG{display:grid;grid-template-columns:1fr;gap:22px}
+    #MG.wide{grid-template-columns:1fr 1fr}
+    @media(max-width:660px){#MG.wide{grid-template-columns:1fr}}
+    #SG{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+    .sc{background:var(--s);border:1px solid var(--b);border-radius:9px;padding:13px 15px;cursor:pointer;transition:border-color .22s,background .22s,transform .18s;animation:fU .5s ease both}
     .sc:hover{border-color:rgba(100,170,220,.55);background:rgba(255,255,255,.08);transform:translateY(-2px)}
     .sc.on{border-color:rgba(100,170,220,.85);background:rgba(74,159,212,.13)}
     .ch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px}
     .cn{font-size:15px;font-weight:600;color:var(--bright);margin-bottom:2px}
     .cr{font-size:11px;color:var(--muted);letter-spacing:.09em}
-    .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px;animation:dotPulse 2.2s ease-in-out infinite}
-    .wh{font-size:21px;font-weight:300;color:var(--accent)}
+    .dt{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px;animation:dp 2.2s ease-in-out infinite}
+    .wv{font-size:21px;font-weight:300;color:var(--accent)}
     .wm{font-size:11px;color:var(--muted)}
     .ph{font-size:12px;color:var(--dim);font-style:italic;margin-top:5px}
-    .cb{display:flex;gap:3px;margin-top:5px}
-    .cs{width:17px;height:7px;border-radius:2px;transition:background .3s}
-
-    /* ── DETAIL ── */
-    #dp{
-      background:rgba(8,24,46,.85);border:1px solid rgba(74,159,212,.32);
-      border-radius:12px;padding:24px;backdrop-filter:blur(14px);
-      animation:fadeUp .38s ease;
-    }
+    .cb{display:flex;gap:3px;margin-top:5px}.cs{width:17px;height:7px;border-radius:2px;transition:background .3s}
+    #DP{background:rgba(8,24,46,.85);border:1px solid rgba(74,159,212,.32);border-radius:12px;padding:24px;backdrop-filter:blur(14px);animation:fU .38s ease}
     .dh{border-bottom:1px solid rgba(74,159,212,.14);padding-bottom:14px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:flex-start}
     .dn{font-size:25px;font-weight:400;color:var(--bright);margin-bottom:3px}
     .dc{font-size:11px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase}
     .bx{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;padding:0 3px}
     .bx:hover{color:var(--light)}
-
     .lw{text-align:center;padding:50px 0}
-    .sp{width:34px;height:34px;border:2px solid rgba(74,159,212,.2);border-top-color:var(--accent);border-radius:50%;margin:0 auto 12px;animation:spin .85s linear infinite}
+    .spinner{width:34px;height:34px;border:2px solid rgba(74,159,212,.2);border-top-color:var(--accent);border-radius:50%;margin:0 auto 12px;animation:sp .85s linear infinite}
     .ll{font-size:11px;color:var(--muted);letter-spacing:.22em;text-transform:uppercase}
-
     .sr{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px}
     .sb{background:rgba(74,159,212,.08);border:1px solid rgba(74,159,212,.14);border-radius:8px;padding:13px 8px;text-align:center}
     .sv{font-size:21px;font-weight:300;color:var(--light);margin-bottom:2px}
     .sl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em}
-
     .cr2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
     .cb2{background:rgba(74,159,212,.05);border:1px solid rgba(74,159,212,.12);border-radius:8px;padding:13px;display:flex;align-items:center;gap:12px}
     .cl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.13em;margin-bottom:3px}
     .cv{font-size:15px;color:var(--bright)}
     .cs2{font-size:12px;color:var(--light);margin-top:2px}
-
     .sfb{border-radius:8px;padding:11px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
     .sfl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.13em;margin-bottom:2px}
     .sfv{font-size:15px;font-weight:600}
-
-    .tabs{display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap}
-    .tab{padding:5px 10px;border-radius:4px;font-size:11px;cursor:pointer;border:1px solid rgba(74,159,212,.2);background:transparent;color:var(--muted);font-family:inherit;transition:all .18s}
-    .tab.on{background:rgba(74,159,212,.22);color:var(--light);border-color:rgba(74,159,212,.5)}
-    .tab:hover{border-color:rgba(74,159,212,.42);color:var(--text)}
-
-    .fs{margin-bottom:14px}
-    .ft{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.18em;margin-bottom:7px}
-    .fb{display:flex;gap:4px;align-items:flex-end;height:58px}
-    .fw{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px}
-    .fg{width:100%;flex:1;background:rgba(74,159,212,.08);border-radius:3px 3px 0 0;position:relative;overflow:hidden}
-    .ff{position:absolute;bottom:0;left:0;right:0;border-radius:3px 3px 0 0;transition:height .55s ease}
-    .fv{font-size:9px;color:var(--light);text-align:center}
-    .fd{font-size:9px;color:var(--muted);text-align:center;white-space:nowrap}
-
     .sum{font-size:13px;color:#88b2cc;line-height:1.82;margin-bottom:10px;font-style:italic;border-left:2px solid rgba(74,159,212,.28);padding-left:11px}
     .src{font-size:10px;color:var(--dim);letter-spacing:.09em}
-
-    .btn-ref{margin-top:14px;width:100%;background:rgba(74,159,212,.1);border:1px solid rgba(74,159,212,.24);color:var(--light);border-radius:6px;padding:10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-family:inherit;cursor:pointer;transition:all .2s}
-    .btn-ref:hover{filter:brightness(1.22);transform:translateY(-1px)}
-
-    .err{text-align:center;padding:36px 0;color:#f87171}
-    .err small{display:block;margin-top:6px;color:var(--muted);font-size:11px}
-
+    .br{margin-top:14px;width:100%;background:rgba(74,159,212,.1);border:1px solid rgba(74,159,212,.24);color:var(--light);border-radius:6px;padding:10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-family:inherit;cursor:pointer;transition:all .2s}
+    .br:hover{filter:brightness(1.22);transform:translateY(-1px)}
+    /* wind table */
+    .wt{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12px}
+    .wt th{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.13em;font-weight:400;padding:4px 6px;border-bottom:1px solid rgba(74,159,212,.12);text-align:left}
+    .wt td{padding:5px 6px;border-bottom:1px solid rgba(74,159,212,.06);color:var(--text)}
+    .wt tr:hover td{background:rgba(74,159,212,.05)}
+    /* debug */
+    #DBG{margin-top:20px;padding:12px 14px;background:rgba(0,0,0,.3);border:1px solid rgba(255,100,100,.2);border-radius:6px;font-size:11px;color:#f87171;font-family:monospace;display:none;white-space:pre-wrap;word-break:break-all}
     footer{text-align:center;margin-top:50px;padding-top:22px;border-top:1px solid rgba(74,159,212,.1)}
-    .ft2{font-size:11px;color:var(--dim);letter-spacing:.18em;text-transform:uppercase}
+    .ft{font-size:11px;color:var(--dim);letter-spacing:.18em;text-transform:uppercase}
     .fn{font-size:11px;color:#1a3a5c;margin-top:5px;font-style:italic}
   </style>
 </head>
 <body>
 
-<!-- decorative BG waves -->
-<div id="bg">
-  <svg height="130" viewBox="0 0 1440 130" preserveAspectRatio="none">
-    <path d="M0,65 Q180,22 360,65 Q540,108 720,65 Q900,22 1080,65 Q1260,108 1440,65 L1440,130 L0,130Z" fill="white"/>
-  </svg>
-  <svg height="100" viewBox="0 0 1440 100" preserveAspectRatio="none" style="bottom:30px">
-    <path d="M0,50 Q360,8 720,50 Q1080,92 1440,50 L1440,100 L0,100Z" fill="white"/>
-  </svg>
-  <svg height="70" viewBox="0 0 1440 70" preserveAspectRatio="none" style="bottom:60px">
-    <path d="M0,35 Q240,5 480,35 Q720,65 960,35 Q1200,5 1440,35 L1440,70 L0,70Z" fill="white"/>
-  </svg>
+<div id="BG">
+  <svg height="130" viewBox="0 0 1440 130" preserveAspectRatio="none"><path d="M0,65 Q180,22 360,65 Q540,108 720,65 Q900,22 1080,65 Q1260,108 1440,65 L1440,130 L0,130Z" fill="white"/></svg>
+  <svg height="100" viewBox="0 0 1440 100" preserveAspectRatio="none" style="bottom:30px"><path d="M0,50 Q360,8 720,50 Q1080,92 1440,50 L1440,100 L0,100Z" fill="white"/></svg>
+  <svg height="70"  viewBox="0 0 1440 70"  preserveAspectRatio="none" style="bottom:60px"><path d="M0,35 Q240,5 480,35 Q720,65 960,35 Q1200,5 1440,35 L1440,70 L0,70Z" fill="white"/></svg>
 </div>
 
-<div id="wrap">
-
+<div id="W">
   <header>
-    <div class="wave-row">
-      <svg class="wi" width="50" height="25" viewBox="0 0 50 25" fill="none">
-        <path d="M1,17 Q7,7 15,17 Q23,27 31,17 Q39,7 49,17" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-      </svg>
-      <svg class="wi" width="50" height="25" viewBox="0 0 50 25" fill="none">
-        <path d="M1,17 Q7,7 15,17 Q23,27 31,17 Q39,7 49,17" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-      </svg>
+    <div class="wr">
+      <svg class="wi" width="50" height="25" viewBox="0 0 50 25" fill="none"><path d="M1,17 Q7,7 15,17 Q23,27 31,17 Q39,7 49,17" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+      <svg class="wi" width="50" height="25" viewBox="0 0 50 25" fill="none"><path d="M1,17 Q7,7 15,17 Q23,27 31,17 Q39,7 49,17" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
     </div>
     <h1>VÅGAGENTEN</h1>
-    <p class="tag">Svenska Kusten · Marindata i Realtid</p>
-    <p class="sub">Vågprognoser för surfare, kajakpaddlare och seglare</p>
-    <span class="badge">✓ Gratis · Ingen API-nyckel · Open-Meteo</span>
+    <p class="tg">Svenska Kusten · Vind &amp; Vågdata</p>
+    <p class="sg">Prognoser för surfare, kajakpaddlare och seglare</p>
+    <span class="bg">✓ Gratis · Ingen API-nyckel · SMHI Open Data</span>
   </header>
 
-  <div class="toolbar">
+  <div class="tb">
     <span class="tl">8 Platser längs kusten</span>
-    <button class="btn-all" id="btnAll" onclick="fetchAll()">↓ Hämta alla platser</button>
+    <button class="ba" id="btnAll" onclick="fetchAll()">↓ Hämta alla platser</button>
   </div>
 
-  <div id="mg">
-    <div><div id="sg"></div></div>
+  <div id="MG">
+    <div><div id="SG"></div></div>
   </div>
 
   <footer>
     <div style="color:var(--accent);margin-bottom:8px">
-      <svg width="44" height="18" viewBox="0 0 44 18" fill="none">
-        <path d="M1,11 Q6,3 12,11 Q18,19 24,11 Q30,3 43,11" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-      </svg>
+      <svg width="44" height="18" viewBox="0 0 44 18" fill="none"><path d="M1,11 Q6,3 12,11 Q18,19 24,11 Q30,3 43,11" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
     </div>
-    <div class="ft2">Vågagenten · Open-Meteo Marine API</div>
-    <div class="fn">Data från DWD / ECMWF · 5 km upplösning · Uppdateras 2× per dag · Kontrollera alltid SMHI innan du ger dig ut</div>
+    <div class="ft">Vågagenten · SMHI Open Data API</div>
+    <div class="fn">Vinddata från SMHI · Kontrollera alltid SMHI:s officiella prognoser innan du ger dig ut</div>
   </footer>
-
-</div><!-- /wrap -->
+</div>
 
 <script>
-"use strict";
-
-/* ===== SPOTS ===== */
-const SPOTS = [
+var SPOTS = [
   {name:"Appeviken",    lat:58.87, lon:11.12, region:"Bohuslän"},
   {name:"Ringenäs",     lat:56.71, lon:12.74, region:"Halland"},
   {name:"Skäret",       lat:56.24, lon:12.56, region:"Skåne NV"},
@@ -224,140 +137,140 @@ const SPOTS = [
   {name:"Torö",         lat:58.82, lon:17.85, region:"Södermanland"},
 ];
 
-const CC = ["#22c55e","#84cc16","#eab308","#f97316","#ef4444"];
-const SC = {green:"#22c55e",yellow:"#eab308",orange:"#f97316",red:"#ef4444"};
+// Beaufort-based wave height estimates from wind speed
+function windToWaveH(ws) {
+  if(ws<1)return 0; if(ws<3)return 0.1; if(ws<5)return 0.2;
+  if(ws<8)return 0.5; if(ws<11)return 1.0; if(ws<14)return 1.5;
+  if(ws<17)return 2.5; if(ws<21)return 3.5; return 5.0;
+}
 
-/* ===== STATE ===== */
-var data     = {};   // spotName -> result object
-var loading  = {};   // spotName -> true/false
-var selSpot  = null;
-var selDay   = 0;
-
-/* ===== UTILS ===== */
-function d2c(deg){
-  var d=((deg%360)+360)%360;
-  return ["N","NNO","NO","ONO","O","OSO","SO","SSO","S","SSV","SV","VSV","V","VNV","NV","NNV"][Math.round(d/22.5)%16];
-}
-function score(wh){
-  if(wh<0.3)return 1; if(wh<0.8)return 2; if(wh<1.5)return 3; if(wh<2.5)return 4; return 5;
-}
-function safety(s){
-  if(s<=2)return{r:"Säkert",c:"green"}; if(s==3)return{r:"Måttligt",c:"yellow"};
-  if(s==4)return{r:"Varning",c:"orange"}; return{r:"Fara",c:"red"};
-}
+var CC=["#22c55e","#84cc16","#eab308","#f97316","#ef4444"];
+var SC={green:"#22c55e",yellow:"#eab308",orange:"#f97316",red:"#ef4444"};
 var CL=["","Lugnt","Svagt","Måttligt","Kraftigt","Stormigt"];
 
-/* ===== FETCH ===== */
-function fetchSpot(spot){
+function score(wh){
+  if(wh<0.3)return 1;if(wh<0.8)return 2;if(wh<1.5)return 3;if(wh<2.5)return 4;return 5;
+}
+function safety(s){
+  if(s<=2)return{r:"Säkert",c:"green"};if(s==3)return{r:"Måttligt",c:"yellow"};
+  if(s==4)return{r:"Varning",c:"orange"};return{r:"Fara",c:"red"};
+}
+function d2c(deg){
+  var d=((deg%360)+360)%360;
+  return["N","NNO","NO","ONO","O","OSO","SO","SSO","S","SSV","SV","VSV","V","VNV","NV","NNV"][Math.round(d/22.5)%16];
+}
+
+var appData={};
+var loading={};
+var selSpot=null;
+var selDay=0;
+
+// SMHI parameter codes
+// ws = wind speed 10m, wd = wind direction, gust = wind gust
+var SMHI_WS=4, SMHI_WD=3, SMHI_GUST=21;
+
+function fetchSpot(spot) {
   if(loading[spot.name])return;
   loading[spot.name]=true;
   render();
 
-  var vars=[
-    "wave_height","wave_direction","wave_period",
-    "wind_wave_height","wind_wave_direction","wind_wave_period",
-    "swell_wave_height","swell_wave_direction","swell_wave_period",
-    "wind_speed_10m","wind_direction_10m"
-  ].join(",");
-
-  var url="https://marine-api.open-meteo.com/v1/marine"
-    +"?latitude="+spot.lat+"&longitude="+spot.lon
-    +"&hourly="+vars
-    +"&wind_speed_unit=ms&timezone=Europe%2FStockholm&forecast_days=7";
+  // SMHI Point forecast API
+  var lon6=spot.lon.toFixed(6);
+  var lat6=spot.lat.toFixed(6);
+  var url="https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/"+lon6+"/lat/"+lat6+"/data.json";
 
   fetch(url)
-    .then(function(r){
-      if(!r.ok)throw new Error("HTTP "+r.status);
-      return r.json();
-    })
-    .then(function(json){
-      var h=json.hourly;
-      var now=new Date();
-      var times=h.time.map(function(t){return new Date(t)});
-      var idx=times.findIndex(function(t){return t>=now});
-      if(idx<0)idx=0;
+  .then(function(r){
+    if(!r.ok) throw new Error("SMHI svarade "+r.status+". Platsen kanske ligger utanför täckning.");
+    return r.json();
+  })
+  .then(function(json){
+    var series=json.timeSeries;
+    if(!series||!series.length) throw new Error("Inga tidsserier i svaret.");
 
-      var hours=h.time.map(function(t,i){
-        return {
-          time:new Date(t),
-          waveHeight:   h.wave_height[i]||0,
-          waveDirection:h.wave_direction[i]||0,
-          wavePeriod:   h.wave_period[i]||0,
-          windWH:       h.wind_wave_height[i]||0,
-          swellH:       h.swell_wave_height[i]||0,
-          swellDir:     h.swell_wave_direction[i]||0,
-          swellPer:     h.swell_wave_period[i]||0,
-          windSpeed:    h.wind_speed_10m[i]||0,
-          windDir:      h.wind_direction_10m[i]||0,
-        };
-      });
+    var now=new Date();
 
-      var days=[];
-      for(var d=0;d<7;d++){
-        var sl=hours.slice(d*24,d*24+24);
-        if(!sl.length)continue;
-        var date=sl[0].time;
-        var pi=sl.reduce(function(b,c,i){return c.waveHeight>sl[b].waveHeight?i:b},0);
-        days.push({
-          date:date,
-          label:d==0?"Idag":d==1?"Imorgon":date.toLocaleDateString("sv-SE",{weekday:"short"}),
-          maxWH:Math.max.apply(null,sl.map(function(x){return x.waveHeight})),
-          peak:sl[pi],
-        });
-      }
-
-      var cur=hours[idx];
-      var sc=score(cur.waveHeight);
-      var sf=safety(sc);
-
-      data[spot.name]={
-        current:cur, hours:hours, days:days,
-        sc:sc, sf:sf,
-        updated:now.toLocaleTimeString("sv-SE",{hour:"2-digit",minute:"2-digit"}),
-      };
-      loading[spot.name]=false;
-      render();
-    })
-    .catch(function(err){
-      data[spot.name]={error:err.message};
-      loading[spot.name]=false;
-      render();
+    // Extract forecast moments
+    var moments=series.map(function(ts){
+      var t=new Date(ts.validTime);
+      var params={};
+      ts.parameters.forEach(function(p){ params[p.name]=p.values[0]; });
+      var ws=params["ws"]||0;
+      var wd=params["wd"]||0;
+      var gust=params["gust"]||ws;
+      var wh=windToWaveH(ws);
+      return {time:t, ws:ws, wd:wd, gust:gust, wh:wh};
     });
+
+    // Current = first moment >= now
+    var cur=moments[0];
+    for(var i=0;i<moments.length;i++){if(moments[i].time>=now){cur=moments[i];break;}}
+
+    // Build days
+    var days=[];
+    var dayMap={};
+    moments.forEach(function(m){
+      var key=m.time.toLocaleDateString("sv-SE");
+      if(!dayMap[key])dayMap[key]={date:m.time,moments:[]};
+      dayMap[key].moments.push(m);
+    });
+    var keys=Object.keys(dayMap).slice(0,7);
+    keys.forEach(function(k,i){
+      var ms=dayMap[k].moments;
+      var maxWH=Math.max.apply(null,ms.map(function(x){return x.wh}));
+      var peakM=ms.reduce(function(b,c){return c.ws>b.ws?c:b},ms[0]);
+      days.push({
+        date:dayMap[k].date,
+        label:i==0?"Idag":i==1?"Imorgon":dayMap[k].date.toLocaleDateString("sv-SE",{weekday:"short"}),
+        maxWH:maxWH,
+        peak:peakM,
+        moments:ms,
+      });
+    });
+
+    var sc=score(cur.wh);
+    var sf=safety(sc);
+    appData[spot.name]={
+      current:cur, days:days, sc:sc, sf:sf,
+      updated:now.toLocaleTimeString("sv-SE",{hour:"2-digit",minute:"2-digit"}),
+      source:"SMHI PMP3g",
+    };
+    loading[spot.name]=false;
+    render();
+  })
+  .catch(function(err){
+    appData[spot.name]={error:err.message};
+    loading[spot.name]=false;
+    render();
+  });
 }
 
 var fetchAllRunning=false;
 function fetchAll(){
   if(fetchAllRunning)return;
   fetchAllRunning=true;
-  var btn=document.getElementById("btnAll");
-  btn.disabled=true;
+  document.getElementById("btnAll").disabled=true;
   var i=0;
   function next(){
-    if(i>=SPOTS.length){fetchAllRunning=false;btn.disabled=false;return;}
-    var spot=SPOTS[i++];
-    if(!data[spot.name]){
-      fetchSpot(spot);
-      setTimeout(next,350);
-    } else {
-      next();
-    }
+    if(i>=SPOTS.length){fetchAllRunning=false;document.getElementById("btnAll").disabled=false;return;}
+    var sp=SPOTS[i++];
+    if(!appData[sp.name]){fetchSpot(sp);setTimeout(next,300);}
+    else next();
   }
   next();
 }
 
-/* ===== COMPASS SVG ===== */
 function compass(deg){
   var a=parseFloat(deg)||0;
-  var pts=[["N",0],["Ö",90],["S",180],["V",270]];
-  var labels=pts.map(function(p){
-    var r=(p[1]-90)*Math.PI/180;
-    var x=36+28*Math.cos(r), y=36+28*Math.sin(r);
+  var lbs=[["N",0],["Ö",90],["S",180],["V",270]];
+  var tx=lbs.map(function(p){
+    var r=(p[1]-90)*Math.PI/180,x=36+28*Math.cos(r),y=36+28*Math.sin(r);
     return '<text x="'+x+'" y="'+y+'" text-anchor="middle" dominant-baseline="central" font-size="8" fill="#7fa8cc" font-family="serif" font-weight="600">'+p[0]+'</text>';
   }).join("");
   return '<svg width="72" height="72" viewBox="0 0 72 72">'
     +'<circle cx="36" cy="36" r="32" stroke="#2a4a6b" stroke-width="1.2" fill="none" opacity=".5"/>'
     +'<circle cx="36" cy="36" r="24" stroke="#2a4a6b" stroke-width=".5" fill="none" opacity=".2"/>'
-    +labels
+    +tx
     +'<g transform="rotate('+a+',36,36)">'
     +'<polygon points="36,8 40,36 36,44 32,36" fill="#4a9fd4" opacity=".9"/>'
     +'<polygon points="36,44 40,36 36,64 32,36" fill="#1a3a5c" opacity=".7"/>'
@@ -366,7 +279,6 @@ function compass(deg){
     +'</svg>';
 }
 
-/* ===== COND BAR ===== */
 function condBar(s){
   var h='<div class="cb">';
   for(var i=1;i<=5;i++)
@@ -374,166 +286,150 @@ function condBar(s){
   return h+'</div>';
 }
 
-/* ===== RENDER SPOTS ===== */
 function renderSpots(){
-  var sg=document.getElementById("sg");
+  var sg=document.getElementById("SG");
   if(!sg)return;
   var html="";
   SPOTS.forEach(function(spot,i){
-    var d=data[spot.name];
+    var d=appData[spot.name];
     var ld=loading[spot.name];
     var ac=selSpot&&selSpot.name===spot.name;
     var dotS=d&&!d.error?'background:'+SC[d.sf.c]+';color:'+SC[d.sf.c]:'display:none';
-
     var body="";
     if(ld){
-      body='<div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:6px">Hämtar…</div>';
+      body='<div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:6px">Hämtar från SMHI…</div>';
     } else if(d&&!d.error){
       body='<div style="display:flex;gap:9px;align-items:baseline;margin-top:4px">'
-          +'<span class="wh">'+d.current.waveHeight.toFixed(1)+' m</span>'
-          +'<span class="wm">'+d.current.wavePeriod.toFixed(0)+' s · '+CL[d.sc]+'</span>'
-          +'</div>'+condBar(d.sc);
+        +'<span class="wv">~'+d.current.wh.toFixed(1)+' m</span>'
+        +'<span class="wm">'+d.current.ws.toFixed(1)+' m/s · '+CL[d.sc]+'</span>'
+        +'</div>'+condBar(d.sc);
     } else if(d&&d.error){
-      body='<div style="font-size:11px;color:#f87171;margin-top:4px">⚠ Kunde ej hämta data</div>';
+      body='<div style="font-size:11px;color:#f87171;margin-top:4px">⚠ '+d.error.slice(0,60)+'</div>';
     } else {
       body='<div class="ph">Klicka för att hämta →</div>';
     }
-
     html+='<div class="sc'+(ac?' on':'')+'" style="animation-delay:'+i*.05+'s" onclick="selectSpot(\''+spot.name+'\')">'
-         +'<div class="ch">'
-           +'<div><div class="cn">'+spot.name+'</div><div class="cr">'+spot.region+'</div></div>'
-           +'<div class="dot" style="'+dotS+'"></div>'
-         +'</div>'
-         +body
-         +'</div>';
+      +'<div class="ch"><div><div class="cn">'+spot.name+'</div><div class="cr">'+spot.region+'</div></div>'
+      +'<div class="dt" style="'+dotS+'"></div></div>'+body+'</div>';
   });
   sg.innerHTML=html;
 }
 
-/* ===== RENDER DETAIL ===== */
 function renderDetail(){
-  var mg=document.getElementById("mg");
-  var existing=document.getElementById("dpw");
-
+  var mg=document.getElementById("MG");
+  var ex=document.getElementById("DPW");
   if(!selSpot){
     mg.classList.remove("wide");
-    if(existing)existing.remove();
+    if(ex)ex.remove();
     return;
   }
   mg.classList.add("wide");
-  if(!existing){
-    existing=document.createElement("div");
-    existing.id="dpw";
-    mg.appendChild(existing);
-  }
-
-  var d=data[selSpot.name];
+  if(!ex){ex=document.createElement("div");ex.id="DPW";mg.appendChild(ex);}
+  var d=appData[selSpot.name];
   var ld=loading[selSpot.name];
   var spot=selSpot;
   var inner="";
 
   if(ld){
-    inner='<div class="lw"><div class="sp"></div><div class="ll">Hämtar marindata…</div></div>';
+    inner='<div class="lw"><div class="spinner"></div><div class="ll">Hämtar SMHI-data…</div></div>';
   } else if(d&&!d.error){
     var day=d.days[selDay]||d.days[0];
     var cur=selDay===0?d.current:day.peak;
-    var sc2=score(cur.waveHeight);
+    var sc2=score(cur.wh);
     var sf2=safety(sc2);
     var safeCol=SC[sf2.c]||"#9ca3af";
-    var bgMap={green:"rgba(34,197,94,.1)",yellow:"rgba(234,179,8,.1)",orange:"rgba(249,115,22,.1)",red:"rgba(239,68,68,.1)"};
-    var boMap={green:"rgba(34,197,94,.3)",yellow:"rgba(234,179,8,.3)",orange:"rgba(249,115,22,.3)",red:"rgba(239,68,68,.3)"};
-    var sfBg=bgMap[sf2.c]||"rgba(100,100,100,.1)";
-    var sfBo=boMap[sf2.c]||"rgba(100,100,100,.3)";
+    var bgM={green:"rgba(34,197,94,.1)",yellow:"rgba(234,179,8,.1)",orange:"rgba(249,115,22,.1)",red:"rgba(239,68,68,.1)"};
+    var boM={green:"rgba(34,197,94,.3)",yellow:"rgba(234,179,8,.3)",orange:"rgba(249,115,22,.3)",red:"rgba(239,68,68,.3)"};
 
-    var maxH=Math.max.apply(null,d.days.map(function(x){return x.maxWH||0}));
+    var maxH=0;
+    d.days.forEach(function(x){if(x.maxWH>maxH)maxH=x.maxWH;});
     if(maxH<0.1)maxH=0.1;
 
     var tabs=d.days.map(function(dy,i){
-      return '<button class="tab'+(i===selDay?' on':'')+'" onclick="selDay='+i+';render()">'+dy.label+'</button>';
+      return '<button class="tab'+(i===selDay?' on':'')+'" style="padding:5px 10px;border-radius:4px;font-size:11px;cursor:pointer;border:1px solid rgba(74,159,212,.2);background:'+(i===selDay?'rgba(74,159,212,.22)':'transparent')+';color:'+(i===selDay?'var(--light)':'var(--muted)')+';font-family:inherit" onclick="selDay='+i+';render()">'+dy.label+'</button>';
     }).join("");
 
     var bars=d.days.map(function(dy){
       var pct=(dy.maxWH/maxH*100).toFixed(0);
       var col=CC[score(dy.maxWH)-1];
-      return '<div class="fw">'
-        +'<div class="fg"><div class="ff" style="height:'+pct+'%;background:'+col+'"></div></div>'
-        +'<div class="fv">'+dy.maxWH.toFixed(1)+'</div>'
-        +'<div class="fd">'+dy.label+'</div>'
-        +'</div>';
+      return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">'
+        +'<div style="width:100%;flex:1;background:rgba(74,159,212,.08);border-radius:3px 3px 0 0;position:relative;overflow:hidden">'
+        +'<div style="position:absolute;bottom:0;left:0;right:0;height:'+pct+'%;background:'+col+';border-radius:3px 3px 0 0;transition:height .5s ease"></div></div>'
+        +'<div style="font-size:9px;color:var(--light);text-align:center">'+dy.maxWH.toFixed(1)+'</div>'
+        +'<div style="font-size:9px;color:var(--muted);text-align:center;white-space:nowrap">'+dy.label+'</div></div>';
     }).join("");
 
-    var sum="Våghöjd "+cur.waveHeight.toFixed(1)+" m, period "+cur.wavePeriod.toFixed(0)+" s, från "+d2c(cur.waveDirection)+". "
-           +"Vind "+cur.windSpeed.toFixed(1)+" m/s från "+d2c(cur.windDir||cur.windDirection||0)+"."
-           +(cur.swellH>0.1?" Dyning "+cur.swellH.toFixed(1)+" m från "+d2c(cur.swellDir)+".":" ")
-           +" Förhållanden: "+CL[sc2].toLowerCase()+".";
+    // Hourly wind table for selected day (first 8 hours)
+    var dayMoments=(selDay===0?d.days[0]:day).moments||[];
+    var tableRows=dayMoments.slice(0,8).map(function(m){
+      var t=m.time.toLocaleTimeString("sv-SE",{hour:"2-digit",minute:"2-digit"});
+      var sc3=score(m.wh);
+      var col=CC[sc3-1];
+      return '<tr>'
+        +'<td>'+t+'</td>'
+        +'<td style="color:var(--light)">'+m.ws.toFixed(1)+' m/s</td>'
+        +'<td>'+Math.round(m.wd)+'° '+d2c(m.wd)+'</td>'
+        +'<td style="color:'+col+'">~'+m.wh.toFixed(1)+' m</td>'
+        +'<td style="color:'+col+'">'+CL[sc3]+'</td>'
+        +'</tr>';
+    }).join("");
 
-    inner=
-      '<div class="tabs">'+tabs+'</div>'
+    var sum="Vind "+cur.ws.toFixed(1)+" m/s från "+d2c(cur.wd)+" ("+Math.round(cur.wd)+"°). "
+      +"Estimerad våghöjd ~"+cur.wh.toFixed(1)+" m. "
+      +"Byvind "+cur.gust.toFixed(1)+" m/s. "
+      +"Förhållanden bedöms som "+CL[sc2].toLowerCase()+".";
+
+    inner='<div style="display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap">'+tabs+'</div>'
       +'<div class="sr">'
-        +'<div class="sb"><div class="sv">'+cur.waveHeight.toFixed(1)+' m</div><div class="sl">Våghöjd</div></div>'
-        +'<div class="sb"><div class="sv">'+cur.wavePeriod.toFixed(0)+' s</div><div class="sl">Period</div></div>'
-        +'<div class="sb"><div class="sv">'+cur.swellH.toFixed(1)+' m</div><div class="sl">Dyning</div></div>'
+        +'<div class="sb"><div class="sv">~'+cur.wh.toFixed(1)+' m</div><div class="sl">Est. Våghöjd</div></div>'
+        +'<div class="sb"><div class="sv">'+cur.ws.toFixed(1)+' m/s</div><div class="sl">Vindstyrka</div></div>'
+        +'<div class="sb"><div class="sv">'+cur.gust.toFixed(1)+' m/s</div><div class="sl">Byvind</div></div>'
       +'</div>'
       +'<div class="cr2">'
-        +'<div class="cb2">'+compass(cur.waveDirection)
-          +'<div><div class="cl">Vågriktning</div>'
-          +'<div class="cv">'+Math.round(cur.waveDirection)+'°</div>'
-          +'<div class="cs2">'+d2c(cur.waveDirection)+'</div></div></div>'
-        +'<div class="cb2">'+compass(cur.windDir||cur.windDirection||0)
-          +'<div><div class="cl">Vind</div>'
-          +'<div class="cv">'+cur.windSpeed.toFixed(1)+' m/s</div>'
-          +'<div class="cs2">'+Math.round(cur.windDir||cur.windDirection||0)+'° '+d2c(cur.windDir||cur.windDirection||0)+'</div></div></div>'
-      +'</div>'
-      +(cur.swellH>0.1?
-        '<div class="cr2">'
-          +'<div class="cb2">'+compass(cur.swellDir)
-            +'<div><div class="cl">Dyningsriktning</div>'
-            +'<div class="cv">'+Math.round(cur.swellDir)+'°</div>'
-            +'<div class="cs2">'+d2c(cur.swellDir)+' · '+cur.swellPer.toFixed(0)+' s</div></div></div>'
-          +'<div class="cb2" style="flex-direction:column;align-items:flex-start;gap:8px">'
-            +'<div><div class="cl">Vindvågor</div><div class="cv">'+cur.windWH.toFixed(1)+' m</div></div>'
-            +'<div><div class="cl">Dyning</div><div class="cv">'+cur.swellH.toFixed(1)+' m · '+cur.swellPer.toFixed(0)+' s</div></div>'
-          +'</div>'
+        +'<div class="cb2">'+compass(cur.wd)
+          +'<div><div class="cl">Vindriktning</div>'
+          +'<div class="cv">'+Math.round(cur.wd)+'°</div>'
+          +'<div class="cs2">'+d2c(cur.wd)+'</div></div></div>'
+        +'<div class="cb2" style="flex-direction:column;align-items:flex-start;gap:8px">'
+          +'<div><div class="cl">Säkerhet</div>'
+          +'<div class="cv" style="color:'+safeCol+';font-weight:600">'+sf2.r+'</div></div>'
+          +'<div><div class="cl">Förhållanden</div>'+condBar(sc2)+'</div>'
         +'</div>'
-      :"")
-      +'<div class="sfb" style="background:'+sfBg+';border:1px solid '+sfBo+'">'
-        +'<div><div class="sfl">Säkerhet</div><div class="sfv" style="color:'+safeCol+'">'+sf2.r+'</div></div>'
-        +'<div style="text-align:right"><div class="sfl">Förhållanden</div>'+condBar(sc2)+'</div>'
       +'</div>'
-      +'<div class="fs"><div class="ft">7-dagars max. våghöjd (m)</div><div class="fb">'+bars+'</div></div>'
+      +'<div style="margin-bottom:14px"><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.18em;margin-bottom:7px">7-dagars max. vindvågor (m)</div>'
+      +'<div style="display:flex;gap:4px;align-items:flex-end;height:58px">'+bars+'</div></div>'
+      +'<div style="margin-bottom:12px"><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.16em;margin-bottom:6px">Timprognos idag</div>'
+      +'<table class="wt"><thead><tr><th>Tid</th><th>Vind</th><th>Riktning</th><th>Vågor</th><th>Status</th></tr></thead><tbody>'
+      +tableRows+'</tbody></table></div>'
       +'<div class="sum">'+sum+'</div>'
-      +'<div class="src">Källa: Open-Meteo Marine API (DWD/ECMWF) · Uppdaterad '+d.updated+'</div>'
-      +'<button class="btn-ref" onclick="refreshSpot(\''+spot.name+'\')">↻ Uppdatera</button>';
+      +'<div class="src">Källa: '+d.source+' · Uppdaterad '+d.updated+' · Våghöjd är estimerad från vindstyrka (Beaufort-skalan)</div>'
+      +'<button class="br" onclick="refreshSpot(\''+spot.name+'\')">↻ Uppdatera</button>';
 
   } else if(d&&d.error){
-    inner='<div class="err">⚠ Kunde inte hämta data<small>'+d.error+'</small></div>'
-         +'<button class="btn-ref" onclick="refreshSpot(\''+spot.name+'\')">↻ Försök igen</button>';
+    inner='<div style="text-align:center;padding:30px 0;color:#f87171">⚠ Kunde inte hämta data<br><small style="color:var(--muted);font-size:11px;display:block;margin-top:6px">'+d.error+'</small></div>'
+      +'<button class="br" onclick="refreshSpot(\''+spot.name+'\')">↻ Försök igen</button>';
   } else {
     inner='<div style="text-align:center;padding:44px 0;color:var(--muted)">Ingen data ännu.</div>';
   }
 
-  existing.innerHTML='<div id="dp">'
+  ex.innerHTML='<div id="DP">'
     +'<div class="dh">'
       +'<div><div class="dn">'+spot.name+'</div><div class="dc">'+spot.region+' · '+spot.lat+'°N '+spot.lon+'°Ö</div></div>'
       +'<button class="bx" onclick="closeDetail()">×</button>'
-    +'</div>'
-    +inner
-    +'</div>';
+    +'</div>'+inner+'</div>';
 }
 
 function render(){renderSpots();renderDetail();}
 
-/* ===== ACTIONS ===== */
 function selectSpot(name){
-  selSpot=SPOTS.find(function(s){return s.name===name});
+  selSpot=SPOTS.find(function(s){return s.name===name;});
   selDay=0;
-  if(!data[name])fetchSpot(selSpot);
+  if(!appData[name])fetchSpot(selSpot);
   else render();
 }
 function closeDetail(){selSpot=null;render();}
-function refreshSpot(name){delete data[name];selDay=0;fetchSpot(SPOTS.find(function(s){return s.name===name}));}
+function refreshSpot(name){delete appData[name];selDay=0;fetchSpot(SPOTS.find(function(s){return s.name===name;}));}
 
-/* ===== BOOT ===== */
 render();
 </script>
 </body>
